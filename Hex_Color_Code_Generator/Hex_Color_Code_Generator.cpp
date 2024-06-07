@@ -54,7 +54,7 @@ void convert(int red, int green, int blue)
 			cout << "div[" << j << "]: " <<div[j]<<" ";
 			cout << "rem[" << j << "]: " << remainder[j] << " "<<bosluk;
 			cout << bosluk << "----------------------------------------" << bosluk;
-		} while (div[j] != 0 && div[j++]!= '/0');
+		} while (div[j++] != 0 );
 	   
 		
 		cout <<bosluk<< "----------------------------------------"<<bosluk;
