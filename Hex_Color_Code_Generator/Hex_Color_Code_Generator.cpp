@@ -29,7 +29,7 @@ void convert(int red, int green, int blue)
 {
 	
 	int j = 0;
-	int div[20], remainder[20];
+	int div[50], remainder[50];
 
 	int RGB[3] = { red,green,blue }; //to store our passed integer values.
 	int temp_div,temp_rem;
@@ -68,7 +68,7 @@ void convert(int red, int green, int blue)
 
 void generate_hexcode(int division[], int remain[]) //  This function will generate hexa color code,
 {
-	int i = 0,j=0,count=0;
+	int i = 0, j=0,count=0;
 
 	int temp;
 
