@@ -68,7 +68,35 @@ void convert(int red, int green, int blue)
 
 void generate_hexcode(int division[], int remain[]) //  This function will generate hexa color code,
 {
+	int i = 0,j=0,count=0;
+
+	int temp;
+
+	while (division[j] >= 0)
+	{
+		cout << "remain[" << j << "]: " << remain[j] << "  ";
+		j++;
+	}
+		
+
+	 
 	
+	
+	
+	
+	
+	
+	/*while (division[i] != 0 && division[i] != '/0' && count < 3)
+	{
+		while (division[j]!=0)
+		{
+			cout << "remain["<< j<<"]" << remain[j++] << "  ";
+		
+		}
+		
+		//count++;
+		i++;
+	}*/
 
 
 
