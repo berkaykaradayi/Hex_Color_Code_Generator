@@ -37,6 +37,7 @@ void convert(int red, int green, int blue)
 	for (int i = 0; i < 3; i++)
 	{  
 		cout <<"---------------------------------" << " for i= " << i <<" And its value inside: "<<RGB[i] << "---------------------------------"<<bosluk;
+		
 		do
 		{
 			
@@ -48,17 +49,6 @@ void convert(int red, int green, int blue)
 			    remainder[j] = temp_rem;  // to get reminder op.
 			RGB[i]=temp_div;
 
-			
-			
-
-			//temp_div = RGB[i] / 16;
-			//div[j] = temp_div;   //to get division op.
-			//RGB[i] = temp_div;
-
-			//temp_rem = RGB[i] % 16;
-			//reminder[j] = temp_rem;  // to get reminder op.
-			//RGB[i] = temp_rem;
-
 
 		
 			cout << "div[" << j << "]: " <<div[j]<<" ";
@@ -66,6 +56,7 @@ void convert(int red, int green, int blue)
 			cout << bosluk << "----------------------------------------" << bosluk;
 		} while (div[j] != 0 && div[j++]!= '/0');
 	   
+		
 		cout <<bosluk<< "----------------------------------------"<<bosluk;
 	}	
 	
