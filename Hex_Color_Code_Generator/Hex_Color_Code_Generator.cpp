@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <string>
 #include <cstring>
+//#include <new>
 
 #define bosluk endl
 
@@ -70,32 +71,36 @@ void generate_hexcode(int division[], int remain[]) //  This function will gener
 {
 	int i = 0, j=0,count=0, k=0;
 
-	int* temp_rem= new int [(sizeof(remain) / sizeof(remain[0]))+1]; // +1 is for '/0'
+	int* temp_rem= new int  [(sizeof(remain) / sizeof(remain[0]))+ 1]; // +1 is for '/0'
 	for (int i = 0; i < 3; i++)
 	{
 		while (division[j] >= 0)
 		{
-			//cout << "remain[" << j << "]: " << remain[j] << "  ";
-			
+			cout << "remain[" << j << "]: " << remain[j] << "  ";
+			  
+			//
 			
 			j++;
 
 
 		}
-        
-		for (int z = j; z >=0 ; z--)
+		temp_rem[k] = remain[--j]; ////
+		
+		cout << "TEMPPPP ::::: " << temp_rem[k];/////
+		k++;//////7
+		/* for (int z = j - 1; z >= 0; z--)
 		{
 			temp_rem[k] = remain[z];
-			cout << "temp_rem: " << temp_rem[k] <<" ";
+			cout << "temp_rem: ["<<k<<"] : " << temp_rem[k] <<" ";
 			k++;
-		}
+		}*/
 		
 		
 	}
-	
+	  ///cout << " TEMP REM: " << *temp_rem;
 		
 
-	delete[] temp_rem;
+	
 	
 	
 	
@@ -115,5 +120,5 @@ void generate_hexcode(int division[], int remain[]) //  This function will gener
 	}*/
 
 
-
+delete[] temp_rem;
 }
