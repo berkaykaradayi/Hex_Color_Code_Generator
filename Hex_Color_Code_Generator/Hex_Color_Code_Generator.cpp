@@ -46,8 +46,11 @@ void convert(int red, int green, int blue)
 
 			temp_div = RGB[i]/16; //to get division op.
 				temp_rem = RGB[i] % 16;
-			div[j] = temp_div;  
+			div[j] = temp_div;
+			div[j + 1] = '\0'; //new added
 			    remainder[j] = temp_rem;  // to get reminder op.
+				remainder[j + 1] = '\0'; //new added, to see if it will fix heap corrpt. error.
+
 			RGB[i]=temp_div;
 
 
@@ -69,25 +72,36 @@ void convert(int red, int green, int blue)
 
 void generate_hexcode(int division[], int remain[]) //  This function will generate hexa color code,
 {
-	int i = 0, j=0,count=0, k=0;
-
+	int i = 0, j=0,count=0, k=0,z=0;
+	int len;
 	int* temp_rem= new int  [(sizeof(remain) / sizeof(remain[0]))+ 1]; // +1 is for '/0'
+
+	while (remain[z]!= '\0' && remain[z]>0) //To find array lenght of array
+	{
+		count++;
+		z++;
+	}
+	 len = count-1;
+		
+
 	for (int i = 0; i < 3; i++)
 	{
-		while (division[j] >= 0)
+		while (division[j] >= 0 /*&& division[j] != '\0'*/)
 		{
-			cout << "remain[" << j << "]: " << remain[j] << "  ";
+			//cout << "remain[" << j << "]: " << remain[j] << "  ";
 			  
-			//
-			
+			temp_rem[k] = remain[len];
+			cout << "TEMPPPP :::::[ "<<k<<"] " << temp_rem[k] <<"  JJJJJ: " <<j<< " "<<bosluk;/////
+			len--;
+			k++;
 			j++;
-
+          
 
 		}
-		temp_rem[k] = remain[--j]; ////
+		 ////
 		
-		cout << "TEMPPPP ::::: " << temp_rem[k];/////
-		k++;//////7
+		
+		//////7
 		/* for (int z = j - 1; z >= 0; z--)
 		{
 			temp_rem[k] = remain[z];
