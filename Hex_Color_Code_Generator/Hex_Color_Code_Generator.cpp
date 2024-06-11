@@ -5,6 +5,8 @@
 
 #define bosluk endl
 
+const int MAX = 50;
+
 using namespace std;
 const int numbers[10] = { 0,1,2,3,4,5,6,7,8,9 };
 const char alhpa[6] = {'a','b','c','d','e','f'};
@@ -30,7 +32,7 @@ void convert(int red, int green, int blue)
 {
 	
 	int j = 0;
-	int div[50], remainder[50];
+	int div[MAX] = {NULL}, remainder[MAX]={NULL};
 
 	int RGB[3] = { red,green,blue }; //to store our passed integer values.
 	int temp_div,temp_rem;
@@ -39,17 +41,21 @@ void convert(int red, int green, int blue)
 	{  
 		cout <<"---------------------------------" << " for i= " << i <<" And its value inside: "<<RGB[i] << "---------------------------------"<<bosluk;
 		
+
 		do
 		{
 			
 			
 
-			temp_div = RGB[i]/16; //to get division op.
+			temp_div = (int)RGB[i]/16; //to get division op.
 				temp_rem = RGB[i] % 16;
 			div[j] = temp_div;
-			div[j + 1] = '\0'; //new added
+
+			  div[j + 1] = '\0'; //new added
+
 			    remainder[j] = temp_rem;  // to get reminder op.
-				remainder[j + 1] = '\0'; //new added, to see if it will fix heap corrpt. error.
+
+			  remainder[j + 1] = '\0'; //new added, to see if it will fix heap corrpt. error.
 
 			RGB[i]=temp_div;
 
@@ -72,21 +78,33 @@ void convert(int red, int green, int blue)
 
 void generate_hexcode(int division[], int remain[]) //  This function will generate hexa color code,
 {
-	int i = 0, j=0,count=0, k=0,z=0;
-	int len;
-	int* temp_rem= new int  [(sizeof(remain) / sizeof(remain[0]))+ 1]; // +1 is for '/0'
+	int i = 0, j=0,count=0, k=0,z=0 , div_count=0,z2=0;
+	int len;  int div_len; int temp_rem_len;
 
-	while (remain[z]!= '\0' && remain[z]>0) //To find array lenght of array
+	temp_rem_len = ((sizeof(remain) / sizeof(remain[0])) + 2);
+
+	int* temp_rem= new int  [temp_rem_len]; // +1 is for '/0'
+
+	while (remain[z]!= '\0' && remain[z]>=0) //To find array lenght of array
 	{
 		count++;
 		z++;
 	}
 	 len = count-1;
+
+	         
+	 //while (division[z2] != '\0' && division[z2] >= 0) //To find array lenght of array
+	 //{
+		// div_count++;
+		// z2++;
+	 //}
+	 //div_len = div_count - 1;
 		
 
-	for (int i = 0; i < 3; i++)
-	{
-		while (division[j] >= 0 /*&& division[j] != '\0'*/)
+	 //for (int i = 0; i < 3; i++) //// bu for olduğu için fazla dönüyor galiba????
+	 //{
+	 //}
+		while ((division[j] >= 0 && division[j] != '\0')  && (len >=0 && remain[len]!='\0'))
 		{
 			//cout << "remain[" << j << "]: " << remain[j] << "  ";
 			  
@@ -100,7 +118,6 @@ void generate_hexcode(int division[], int remain[]) //  This function will gener
 		}
 		 ////
 		
-		
 		//////7
 		/* for (int z = j - 1; z >= 0; z--)
 		{
@@ -110,10 +127,11 @@ void generate_hexcode(int division[], int remain[]) //  This function will gener
 		}*/
 		
 		
-	}
-	  ///cout << " TEMP REM: " << *temp_rem;
+	// for closing tag }
+	  
 		
-
+	temp_rem[k] = '\0';
+	//division[j] = '\0';*/
 	
 	
 	
