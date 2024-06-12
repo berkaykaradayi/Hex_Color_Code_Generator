@@ -71,17 +71,18 @@ void convert(int red, int green, int blue)
 		cout <<bosluk<< "----------------------------------------"<<bosluk;
 	}	
 	
-	 remain_size = sizeof(remainder) / sizeof(remainder[0]); // if we do like this, it will return fix sized of array, which is 50+1;
-	//		
-	//while (/*remainder[s] != '\0' &&*/ remainder[s] != 0) //To find array lenght of array
-	//{
-	//	sayac++;
-	//	s++;
-	//}
-	//remain_size = sayac+1;
+	  //// -----  >>>>>   remain_size = sizeof(remainder) / sizeof(remainder[0]); // if we do like this, it will return fix sized of array, which is 50+1;
+			
+	while (/*remainder[s] != '\0' &&*/ remainder[s] >= 0) //To find array lenght of array
+	{
+		sayac++;
+		s++;
+	}
+	remain_size = sayac;
 
 
-	generate_hexcode(div, remainder, remain_size);
+	generate_hexcode(div, remainder, remain_size); // if i use size of(...)/ size of(...[0]),  remain_size = 50, but thats total. Im trying to get only filled cells??? 
+																									//so i back to count using while.
 
 
 
@@ -94,16 +95,16 @@ void generate_hexcode(int division[], int remain[], int rm_size) //  This functi
 
 						//temp_rem_len = ((sizeof(remain) / sizeof(remain[0])) + 2);   /// ->>> does not give the right result??
 
-	int *temp_rem= new int [rm_size]; 
-
-																	//while (/*remain[z]!= '\0' &&*/ remain[z]!=0) //To find array lenght of array
-																	//{
-																	//	count++;
-																	//	z++;
-																	//}
+	int *temp_rem= new int (rm_size); 
+		
+		//while (/*remain[z]!= '\0' &&*/ remain[z]!=0) //To find array lenght of array
+		//{
+		//	count++;
+		//	z++;
+		//}
 	 
 	
-	len = count-1;
+	len = rm_size-1;
 
 	         
 	 //while (division[z2] != '\0' && division[z2] >= 0) //To find array lenght of array
@@ -114,10 +115,10 @@ void generate_hexcode(int division[], int remain[], int rm_size) //  This functi
 	 //div_len = div_count - 1;
 		
 
-	 //for (int i = 0; i < 3; i++) //// bu for olduğu için fazla dönüyor galiba????
-	 //{
-	 //}
-		while ((division[j] != 0 /*&& division[j] != '\0'*/)  && (len >=0 && remain[len]!=0  /*'\0'*/))
+	 for (int i = 0; i < 3; i++) //// bu for olduğu için fazla dönüyor galiba????
+	 {
+	  
+	  while ((division[j] != 0 /*&& division[j] != '\0'*/)  && (len >=0 && remain[len]!= 0  /*'\0'*/)) /////HERE  remain ===???
 		{
 			//cout << "remain[" << j << "]: " << remain[j] << "  ";
 			  
@@ -130,6 +131,13 @@ void generate_hexcode(int division[], int remain[], int rm_size) //  This functi
 			 //temp_rem[k] = '\0';
 
 		}
+	  
+	  
+	  
+	  
+	  
+	 }
+		
 		 ////
 		
 		//////7
@@ -141,7 +149,7 @@ void generate_hexcode(int division[], int remain[], int rm_size) //  This functi
 		}*/
 		
 		
-	// for closing tag }
+	// "for" closing tag }
 	  
 		
   
