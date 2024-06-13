@@ -71,9 +71,9 @@ void convert(int red, int green, int blue)
 		cout <<bosluk<< "----------------------------------------"<<bosluk;
 	}	
 	
-	  //// -----  >>>>>   remain_size = sizeof(remainder) / sizeof(remainder[0]); // if we do like this, it will return fix sized of array, which is 50+1;
+	  //// -----  >>>>>   remain_size = sizeof(remainder) / sizeof(remainder[0]); // if we do like this, it will return fix sized of array, which is 50;
 			
-	while (/*remainder[s] != '\0' &&*/ remainder[s] >= 0) //To find array lenght of array
+	while (remainder[s] >= 0) //To find array lenght of array
 	{
 		sayac++;
 		s++;
@@ -81,7 +81,7 @@ void convert(int red, int green, int blue)
 	remain_size = sayac;
 
 
-	generate_hexcode(div, remainder, remain_size); // if i use size of(...)/ size of(...[0]),  remain_size = 50, but thats total. Im trying to get only filled cells??? 
+	generate_hexcode(div, remainder, remain_size); // if i use sizeof(...)/ sizeof(...[0]),  remain_size = 50, but thats total. Im trying to get only filled cells??? 
 																									//so i back to count using while.
 
 
@@ -91,88 +91,64 @@ void convert(int red, int green, int blue)
 void generate_hexcode(int division[], int remain[], int rm_size) //  This function will generate hexa color code,
 {
 	int i = 0, j=0,count=0, k=0,z=0 , div_count=0,z2=0;
-	int len;  int div_len; int temp_rem_len;
+	int len;  int div_len; int temp_rem_len; int y = 0;
+		int div_sayac = 0;
+	int div_temp;
 
-						//temp_rem_len = ((sizeof(remain) / sizeof(remain[0])) + 2);   /// ->>> does not give the right result??
+					
 
-	int *temp_rem= new int (rm_size); 
-		
-		//while (/*remain[z]!= '\0' &&*/ remain[z]!=0) //To find array lenght of array
-		//{
-		//	count++;
-		//	z++;
-		//}
+	int *temp_rem= new int [rm_size]; 
+	
 	 
 	
-	len = rm_size-1;
-
-	         
-	 //while (division[z2] != '\0' && division[z2] >= 0) //To find array lenght of array
-	 //{
-		// div_count++;
-		// z2++;
-	 //}
-	 //div_len = div_count - 1;
+	len = rm_size; 
 		
 
-	 for (int i = 0; i < 3; i++) //// bu for olduğu için fazla dönüyor galiba????
-	 {
-	  
-	  while ((division[j] != 0 /*&& division[j] != '\0'*/)  && (len >=0 && remain[len]!= 0  /*'\0'*/)) /////HERE  remain ===???
+
+	  while ((division[j] >= 0 ))
 		{
 			//cout << "remain[" << j << "]: " << remain[j] << "  ";
-			  
-			temp_rem[k] = remain[len];
+		  while (division[y]>=0)
+		  {
+			  if (division[y]!=0)
+			  {
+				  div_count++;
+				  y++;
+				  div_sayac++;
+				 
+			  }
+			  else
+			  {     
+				  div_count++;
+				  y++;
+				  div_sayac++;
+					break;
+			  }
+		  }
+
+		  div_temp = div_count;
+		  div_count = div_count - 1;
+		  
+		  while (div_count >=0 && div_sayac>0) //div_sayac ???? >0 || >=0
+		  {
+
+			temp_rem[k] = remain[div_count];
 			cout << "TEMPPPP :::::[ "<<k<<"] " << temp_rem[k] <<"  JJJJJ: " <<j<< " "<<bosluk;/////
-			len--;
+			div_count--;
+			div_sayac--;
 			k++;
 			j++;
-          
-			 //temp_rem[k] = '\0';
+
+					
+		  }
+
+          //len--;
+		  div_count=div_temp;
+		  div_sayac = 0; /// last addeddd -> div_sayac
+
 
 		}
 	  
-	  
-	  
-	  
-	  
-	 }
-		
-		 ////
-		
-		//////7
-		/* for (int z = j - 1; z >= 0; z--)
-		{
-			temp_rem[k] = remain[z];
-			cout << "temp_rem: ["<<k<<"] : " << temp_rem[k] <<" ";
-			k++;
-		}*/
-		
-		
-	// "for" closing tag }
-	  
-		
-  
-	//division[j] = '\0';*/
-	
-	
-	
-	
-	
-	
-	
-	/*while (division[i] != 0 && division[i] != '/0' && count < 3)
-	{
-		while (division[j]!=0)
-		{
-			cout << "remain["<< j<<"]" << remain[j++] << "  ";
-		
-		}
-		
-		//count++;
-		i++;
-	}*/
-
 
 delete [] temp_rem;
 }
