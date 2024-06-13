@@ -37,6 +37,8 @@ void convert(int red, int green, int blue)
 	int RGB[3] = { red,green,blue }; //to store our passed integer values.
 	int temp_div,temp_rem;
 
+	
+
 	int s = 0, sayac = 0; int remain_size;
 	for (int i = 0; i < 3; i++)
 	{  
@@ -94,7 +96,8 @@ void generate_hexcode(int division[], int remain[], int rm_size) //  This functi
 	int len;  int div_len; int temp_rem_len; int y = 0;
 		int div_sayac = 0;
 	int div_temp;
-
+			int hex_code_temp;
+			int a = 0;
 					
 
 	int *temp_rem= new int [rm_size]; 
@@ -149,6 +152,30 @@ void generate_hexcode(int division[], int remain[], int rm_size) //  This functi
 
 		}
 	  
+	  cout << "#";
+	  for (size_t i = 0; i < rm_size; i++) // to print out as hex 
+	  {
+		  if (temp_rem[i] >=10)
+		  {
+			  while (a<6)
+			  { 
+				  if (temp_rem[i]==alhpa[a])
+				 {
+					  cout << alhpa[a];
+				 }
+				  a++;
+				  break; ////
+			  }
+			  a = 0;	  
+			  
+		  }
+		  else
+		  {
+			cout << temp_rem[i];
+		  }
+		  
+	  }
+	 
 
 delete [] temp_rem;
 }
