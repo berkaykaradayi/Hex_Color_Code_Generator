@@ -1,15 +1,13 @@
 ﻿#include <iostream>
 #include <string>
 #include <cstring>
-//#include <new>
 
 #define bosluk endl
 
 const int MAX = 50;
 
 using namespace std;
-const int numbers[10] = { 0,1,2,3,4,5,6,7,8,9 };
-const char alhpa[6] = {'a','b','c','d','e','f'};
+const char alpha[6] = {'a','b','c','d','e','f'};
 
 void convert(int red, int green, int blue);
 void generate_hexcode(int division[],int remain[], int rm_size);
@@ -53,12 +51,7 @@ void convert(int red, int green, int blue)
 			temp_div = RGB[i]/16; //to get division op.
 				temp_rem = RGB[i] % 16;
 			div[j] = temp_div;
-
-			  //div[j + 1] = '\0'; //new added
-
 			    remainder[j] = temp_rem;  // to get reminder op.
-
-			  //remainder[j + 1] = '\0'; //new added, to see if it will fix heap corrpt. error.
 
 			RGB[i]=temp_div;
 
@@ -93,7 +86,7 @@ void convert(int red, int green, int blue)
 void generate_hexcode(int division[], int remain[], int rm_size) //  This function will generate hexa color code,
 {
 	int i = 0, j=0,count=0, k=0,z=0 , div_count=0,z2=0;
-	int len;  int div_len; int temp_rem_len; int y = 0;
+	int len; int temp_rem_len; int y = 0;
 		int div_sayac = 0;
 	int div_temp;
 			int hex_code_temp;
@@ -110,7 +103,6 @@ void generate_hexcode(int division[], int remain[], int rm_size) //  This functi
 
 	  while ((division[j] >= 0 ))
 		{
-			//cout << "remain[" << j << "]: " << remain[j] << "  ";
 		  while (division[y]>=0)
 		  {
 			  if (division[y]!=0)
@@ -132,11 +124,11 @@ void generate_hexcode(int division[], int remain[], int rm_size) //  This functi
 		  div_temp = div_count;
 		  div_count = div_count - 1;
 		  
-		  while (div_count >=0 && div_sayac>0) //div_sayac ???? >0 || >=0
+		  while (div_count >=0 && div_sayac>0) 
 		  {
 
 			temp_rem[k] = remain[div_count];
-			cout << "TEMPPPP :::::[ "<<k<<"] " << temp_rem[k] <<"  JJJJJ: " <<j<< " "<<bosluk;/////
+			cout << "TEMPPPP :::::[ "<<k<<"] " << temp_rem[k] <<bosluk;/////
 			div_count--;
 			div_sayac--;
 			k++;
@@ -157,17 +149,8 @@ void generate_hexcode(int division[], int remain[], int rm_size) //  This functi
 	  {
 		  if (temp_rem[i] >=10)
 		  {
-			  while (a<6)
-			  { 
-				  if (temp_rem[i]==alhpa[a])
-				 {
-					  cout << alhpa[a];
-				 }
-				  a++;
-				  break; ////
-			  }
-			  a = 0;	  
-			  
+			 hex_code_temp =temp_rem[i] % 10;
+			 cout << alpha[hex_code_temp];  			  
 		  }
 		  else
 		  {
